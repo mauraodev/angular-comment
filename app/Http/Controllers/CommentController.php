@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
 
 class CommentController extends Controller
 {
@@ -13,10 +14,10 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        Comment::create(array(
-            'author' => $request->input('author'),
-            'text' => $request->input('text')
-        ));
+        $Comment = new Comment;
+        $Comment->author = $request->input('author');
+        $Comment->text = $request->input('text');
+        $Comment->save();
 
         return response()->json(['success' => true]);
     }

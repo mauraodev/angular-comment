@@ -6,7 +6,7 @@ angular.module('commentService', [])
                 return $http.get('/api/comments');
             },
 
-            save: function() {
+            save: function(commentData) {
                 return $http({
                     method: 'POST',
                     url: '/api/comments',
